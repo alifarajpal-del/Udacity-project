@@ -13,6 +13,8 @@ from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
 from classify_images import classify_images
 from adjust_results4_isadog import adjust_results4_isadog
+from calculates_results_stats import calculates_results_stats
+from print_results import print_results
 from classifier import classifier
 
 
@@ -42,6 +44,12 @@ def main():
     
     # Adjust results to classify labels as dogs or not dogs
     adjust_results4_isadog(pet_image_labels, in_arg.dogfile)
+    
+    # Calculate results statistics
+    results_stats = calculates_results_stats(pet_image_labels)
+    
+    # Print results
+    print_results(pet_image_labels, results_stats, in_arg.arch)
     
     # TODO: 0 - Record the end time
     end_time = time()
