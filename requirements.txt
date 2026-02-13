@@ -1,0 +1,73 @@
+# ==============================================================================
+# Udacity Image Classification Project - Requirements
+# ==============================================================================
+# Python 3.8+ required
+#
+# Installation:
+#   pip install -r requirements.txt
+#
+# For GPU support, install PyTorch with CUDA:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+# ==============================================================================
+
+# ---- Core Deep Learning Framework ----
+torch>=2.0.0,<3.0.0
+torchvision>=0.15.0,<1.0.0
+
+# ---- Image Processing ----
+Pillow>=9.0.0,<11.0.0
+
+# ---- Data Handling (if needed for extensions) ----
+# numpy>=1.21.0,<2.0.0
+# pandas>=1.3.0,<3.0.0
+
+# ---- Visualization (optional, for future enhancements) ----
+# matplotlib>=3.4.0,<4.0.0
+# seaborn>=0.11.0,<1.0.0
+
+# ---- Model Analysis (optional) ----
+# scikit-learn>=1.0.0,<2.0.0
+# scipy>=1.7.0,<2.0.0
+
+# ---- Development Tools (optional) ----
+# pytest>=7.0.0,<9.0.0              # Testing framework
+# black>=22.0.0,<25.0.0             # Code formatter
+# flake8>=4.0.0,<8.0.0              # Linter
+# mypy>=0.950,<2.0                  # Type checker
+
+# ---- Logging & Monitoring (optional) ----
+# tensorboard>=2.10.0,<3.0.0        # Training visualization
+# tqdm>=4.60.0,<5.0.0               # Progress bars
+
+# ==============================================================================
+# Version Notes:
+#
+# PyTorch 2.0+:
+#   - Improved performance with torch.compile()
+#   - Better CPU inference optimizations
+#   - Backwards compatible with existing code
+#
+# Pillow:
+#   - Required for image loading and preprocessing
+#   - Handles JPEG, PNG, and common image formats
+#
+# Reproducibility:
+#   - Pin minor versions for consistent behavior
+#   - Update periodically for security patches
+# ==============================================================================
+
+# ==============================================================================
+# Platform-Specific Notes:
+#
+# Windows:
+#   - Ensure Microsoft Visual C++ 14.0+ is installed
+#   - May need to install PyTorch via conda for some systems
+#
+# macOS:
+#   - Apple Silicon (M1/M2): Use nightly builds for optimal performance
+#   - Intel: Standard PyTorch works well
+#
+# Linux:
+#   - Most compatible platform
+#   - GPU support requires CUDA toolkit
+# ==============================================================================

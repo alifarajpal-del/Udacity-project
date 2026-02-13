@@ -1,0 +1,142 @@
+# ==============================================================================
+# Python .gitignore for Udacity Image Classification Project
+# ==============================================================================
+
+# ---- Python Bytecode & Cache ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ---- Distribution / Packaging ----
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ---- PyInstaller ----
+*.manifest
+*.spec
+
+# ---- Unit Test / Coverage ----
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ---- Virtual Environments ----
+.venv/
+venv/
+ENV/
+env/
+.virtualenv
+
+# ---- IDEs & Editors ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ---- Jupyter Notebook ----
+.ipynb_checkpoints
+*.ipynb
+
+# ---- PyCharm ----
+.idea/
+*.iml
+
+# ---- VS Code ----
+.vscode/
+*.code-workspace
+
+# ---- Logs ----
+*.log
+logs/
+*.out
+
+# ---- Model Files (Large) ----
+# Uncomment if storing custom trained models
+# *.pth
+# *.pt
+# *.h5
+# *.ckpt
+
+# ---- PyTorch Specific ----
+.torch/
+checkpoints/
+runs/
+
+# ---- Data Files (if large) ----
+# Uncomment if you have large datasets to exclude
+# data/
+# *.csv
+# *.dat
+
+# ---- OS Generated ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ---- Project Specific ----
+# Keep test results for demonstration
+# If you want to exclude test outputs, uncomment below:
+# *uploaded-images.txt
+# FINAL_REPORT.txt
+# AUTOMATION_COMPLETE.txt
+
+# ---- Trunk (Code Quality Tool) ----
+.trunk/
+
+# ---- Environment Variables ----
+.env
+.env.local
+.env.*.local
+
+# ---- Temporary Files ----
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# ---- System Files ----
+*.pid
+*.seed
+*.pid.lock
+
+# ==============================================================================
+# Keep These Files (Whitelist)
+# ==============================================================================
+# !README.md
+# !requirements.txt
+# !LICENSE
+# !.gitignore
