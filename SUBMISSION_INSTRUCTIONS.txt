@@ -1,0 +1,114 @@
+==========================================================================
+UDACITY PROJECT SUBMISSION - SETUP INSTRUCTIONS
+==========================================================================
+
+YOUR PROJECT HAS BEEN REBUILT WITH ALL REQUIRED FILES
+
+STATUS: ✅ Structure complete | ⚠️ pet_images folder EMPTY (CRITICAL)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CRITICAL: DOWNLOAD 40 TEST IMAGES FOR pet_images/
+
+Udacity REQUIRES 40 test images in the pet_images/ folder.
+Without these, the reviewer CANNOT grade your project.
+
+DOWNLOAD STEPS:
+
+1. Go to: https://github.com/udacity/AIPND-revision/archive/refs/heads/master.zip
+   
+2. Download and extract the ZIP file
+
+3. Navigate to:
+   AIPND-revision-master\intropyproject-classify-pet-images\pet_images\
+   
+4. Copy ALL 40 *.jpg files to:
+   C:\Users\PH-User\Udacity-project\pet_images\
+   
+5. Verify count:
+   Get-ChildItem pet_images\*.jpg | Measure-Object
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FILES INCLUDED IN YOUR PROJECT:
+
+Core Python Modules (8):
+✅ check_images.py
+✅ classifier.py  
+✅ classify_images.py
+✅ get_input_args.py
+✅ get_pet_labels.py
+✅ adjust_results4_isadog.py
+✅ calculates_results_stats.py 
+✅ print_results.py
+
+Hints Files (6):
+✅ get_input_args_hints.py
+✅ get_pet_labels_hints.py
+✅ classify_images_hints.py
+✅ adjust_results4_isadog_hints.py
+✅ calculates_results_stats_hints.py
+✅ print_results_hints.py
+
+Helper Files:
+✅ print_functions_for_lab_checks.py
+
+Data Files:
+✅ dognames.txt
+✅ imagenet1000_clsid_to_human.txt
+✅ check_images.txt
+
+Scripts:
+✅ run_models_batch.sh
+✅ run_models_batch_uploaded.bat
+
+Directories:
+✅ uploaded_images/ (4 test images)
+⚠️  pet_images/ (EMPTY - needs 40 images)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AFTER ADDING pet_images:
+
+1. Test with one model:
+   .venv\Scripts\python check_images.py --dir pet_images/ --arch resnet --dogfile dognames.txt
+
+2. Generate required output files:
+   .venv\Scripts\python check_images.py --dir pet_images/ --arch resnet  --dogfile dognames.txt > resnet_pet-images.txt
+   .venv\Scripts\python check_images.py --dir pet_images/ --arch alexnet --dogfile dognames.txt > alexnet_pet-images.txt
+   .venv\Scripts\python check_images.py --dir pet_images/ --arch vgg     --dogfile dognames.txt > vgg_pet-images.txt
+
+3. Create submission ZIP with these files:
+   - All .py files (15 total: 8 core + 6 hints + 1 helper)
+   - pet_images/ folder (40 images) 
+   - uploaded_images/ folder (your test images)
+   - dognames.txt
+   - imagenet1000_clsid_to_human.txt
+   - check_images.txt
+   - run_models_batch.sh
+   - Output files: resnet_pet-images.txt, alexnet_pet-images.txt, vgg_pet-images.txt
+
+DO NOT INCLUDE:
+   .venv/, .vscode/, .git/, __pycache__/, .gitignore, .pylintrc, requirements.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+QUICK POWERSHELL COMMANDS:
+
+# Check pet_images count (should be 40):
+Get-ChildItem pet_images\*.jpg | Measure-Object | Select-Object Count
+
+# Test one model:
+.venv\Scripts\python check_images.py --dir pet_images/ --arch resnet --dogfile dognames.txt
+
+# Generate all outputs:
+.\run_models_batch_uploaded.bat
+
+# Create submission folder:
+New-Item -ItemType Directory -Path "..\udacity-submission" -Force
+Copy-Item *.py, *.txt, *.sh, pet_images, uploaded_images "..\udacity-submission\" -Recurse
+
+# Create ZIP:
+Compress-Archive -Path "..\udacity-submission\*" -DestinationPath "udacity-dog-classifier-submission.zip" -Force
+
+==========================================================================
