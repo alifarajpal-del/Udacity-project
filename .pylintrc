@@ -1,0 +1,44 @@
+[MASTER]
+ignore=.venv,__pycache__,.git,.trunk,.vscode
+ignore-patterns=
+
+[MESSAGES CONTROL]
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    invalid-name,
+    line-too-long,
+    too-many-locals,
+    too-many-branches,
+    too-many-statements,
+    too-many-arguments,
+    too-few-public-methods,
+    duplicate-code,
+    broad-exception-caught,
+    broad-except,
+    consider-using-f-string,
+    unnecessary-pass,
+    import-error,
+    no-member,
+    redefined-outer-name,
+    unused-argument,
+    protected-access,
+    attribute-defined-outside-init,
+    too-many-instance-attributes,
+    fixme,
+    global-statement,
+    consider-using-enumerate,
+    consider-using-dict-items
+
+[FORMAT]
+max-line-length=120
+
+[BASIC]
+good-names=i,j,k,x,y,z,f,df,np,pd,ax,fig,_,e
+
+[DESIGN]
+max-args=10
+max-locals=20
+max-branches=15
+max-statements=60
