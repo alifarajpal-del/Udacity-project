@@ -8,14 +8,13 @@ This module contains the main function that uses a pre-trained CNN model
 to classify images of pets from a folder.
 """
 
-from time import time, sleep
+from time import time
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
 from classify_images import classify_images
 from adjust_results4_isadog import adjust_results4_isadog
 from calculates_results_stats import calculates_results_stats
 from print_results import print_results
-from classifier import classifier
 
 
 def main():
@@ -29,9 +28,6 @@ def main():
     """
     # TODO: 0 - Record the start time
     start_time = time()
-    
-    # Temporary sleep for testing timing code
-    sleep(1)
     
     # Get command-line arguments
     in_arg = get_input_args()

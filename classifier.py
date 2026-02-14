@@ -18,14 +18,6 @@ import torchvision.models as models
 from torch import __version__
 
 
-# Supported pretrained networks. This dictionary is used to retrieve the correct
-# architecture's pretrained model.
-resnet18 = models.resnet18(pretrained=True)
-alexnet = models.alexnet(pretrained=True)
-vgg16 = models.vgg16(pretrained=True)
-
-models_dict = {'resnet': resnet18, 'alexnet': alexnet, 'vgg': vgg16}
-
 # obtain ImageNet labels - this only needs to be done once
 with open('imagenet1000_clsid_to_human.txt') as imagenet_classes_file:
     imagenet_classes_dict = ast.literal_eval(imagenet_classes_file.read())
@@ -43,12 +35,17 @@ def classifier(img_path, model_name):
         breed - The classifier label as a string
     """
     # check model name is one we can use
-    if model_name not in models_dict:
+    if model_name not in ['resnet', 'alexnet', 'vgg']:
         print("Model name '{}' not recognized. Acceptable values: resnet, alexnet, vgg".format(model_name))
         return None
     
-    # loads model
-    model = models_dict[model_name]
+    # Load ONLY the requested model (lazy loading)
+    if model_name == 'resnet':
+        model = models.resnet18(pretrained=True)
+    elif model_name == 'alexnet':
+        model = models.alexnet(pretrained=True)
+    elif model_name == 'vgg':
+        model = models.vgg16(pretrained=True)
     
     # Set model to evaluation mode
     model.eval()
