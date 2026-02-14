@@ -1,7 +1,0 @@
-Questions regarding Uploaded Image Classification:
-
-1. Did the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed? If not, report the accuracy of each of the classifications and why you think the models classified the image differently?
-
-2. Did each of the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed of dog as that model architecture classified Dog_02.jpg? If not, report the accuracy of each of the classifications and why you think the models classified the image differently?
-
-3. Did the three model architectures correctly classify Animal_Name_01.jpg and Object_Name_01.jpg to not be dogs? Based upon your answer, select the model architecture that you feel did the best at classifying the four uploaded images.
