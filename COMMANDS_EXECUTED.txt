@@ -1,0 +1,134 @@
+# UDACITY SUBMISSION PREPARATION - POWERSHELL COMMANDS
+# Executed on: February 14, 2026
+# Status: ✅ COMPLETE
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 1: Verify Required Files
+# ═══════════════════════════════════════════════════════════════════
+Get-ChildItem -Filter "*.py" | Measure-Object | Select-Object Count
+# Result: 15 Python files present
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 2: Download Udacity Starter Project
+# ═══════════════════════════════════════════════════════════════════
+Invoke-WebRequest -Uri "https://github.com/udacity/AIPND-revision/archive/refs/heads/master.zip" -OutFile "starter.zip"
+# Result: Downloaded 9,049,352 bytes (8.6 MB)
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 3: Extract Starter Project
+# ═══════════════════════════════════════════════════════════════════
+Expand-Archive -Path "starter.zip" -DestinationPath "starter_extracted" -Force
+# Result: Extracted to starter_extracted\AIPND-revision-master\
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 4: Copy 40 Images from Starter to Local pet_images/
+# ═══════════════════════════════════════════════════════════════════
+Copy-Item -Path "starter_extracted\AIPND-revision-master\intropyproject-classify-pet-images\pet_images\*.jpg" -Destination ".\pet_images\" -Force
+# Verification:
+(Get-ChildItem -Path ".\pet_images\" -Filter "*.jpg" | Measure-Object).Count
+# Result: 40 images ✅
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 5: Generate Output Files for pet_images (3 CNN models)
+# ═══════════════════════════════════════════════════════════════════
+
+# ResNet
+.venv\Scripts\python check_images.py --dir pet_images/ --arch resnet --dogfile dognames.txt > resnet_pet-images.txt 2>&1
+
+# AlexNet
+.venv\Scripts\python check_images.py --dir pet_images/ --arch alexnet --dogfile dognames.txt > alexnet_pet-images.txt 2>&1
+
+# VGG
+.venv\Scripts\python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt > vgg_pet-images.txt 2>&1
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 6: Generate Output Files for uploaded_images (3 CNN models)
+# ═══════════════════════════════════════════════════════════════════
+
+# ResNet
+.venv\Scripts\python check_images.py --dir uploaded_images/ --arch resnet --dogfile dognames.txt > resnet_uploaded-images.txt 2>&1
+
+# AlexNet
+.venv\Scripts\python check_images.py --dir uploaded_images/ --arch alexnet --dogfile dognames.txt > alexnet_uploaded-images.txt 2>&1
+
+# VGG
+.venv\Scripts\python check_images.py --dir uploaded_images/ --arch vgg --dogfile dognames.txt > vgg_uploaded-images.txt 2>&1
+
+# Verification:
+Get-ChildItem -Filter "*-images.txt" | Measure-Object
+# Result: 6 output files created ✅
+#   - resnet_pet-images.txt
+#   - alexnet_pet-images.txt
+#   - vgg_pet-images.txt
+#   - resnet_uploaded-images.txt
+#   - alexnet_uploaded-images.txt
+#   - vgg_uploaded-images.txt
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 7: Create Clean Submission Folder
+# ═══════════════════════════════════════════════════════════════════
+
+# Create folder
+New-Item -ItemType Directory -Path "SUBMISSION_CLEAN" -Force
+
+# Copy core Python files
+Copy-Item -Path "check_images.py","classifier.py","classify_images.py","get_input_args.py","get_pet_labels.py","adjust_results4_isadog.py","calculates_results_stats.py","print_results.py" -Destination "SUBMISSION_CLEAN\" -Force
+
+# Copy hints files
+Copy-Item -Path "*_hints.py" -Destination "SUBMISSION_CLEAN\" -Force
+
+# Copy helper and data files
+Copy-Item -Path "print_functions_for_lab_checks.py","dognames.txt","imagenet1000_clsid_to_human.txt","check_images.txt" -Destination "SUBMISSION_CLEAN\" -Force
+
+# Copy scripts
+Copy-Item -Path "run_models_batch.sh","run_models_batch_uploaded.bat" -Destination "SUBMISSION_CLEAN\" -Force
+
+# Copy image folders
+Copy-Item -Path "pet_images" -Destination "SUBMISSION_CLEAN\" -Recurse -Force
+Copy-Item -Path "uploaded_images" -Destination "SUBMISSION_CLEAN\" -Recurse -Force
+
+# Copy output files
+Copy-Item -Path "*-images.txt" -Destination "SUBMISSION_CLEAN\" -Force
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 8: Verify Submission Folder Integrity
+# ═══════════════════════════════════════════════════════════════════
+
+# Count files
+(Get-ChildItem -Path "SUBMISSION_CLEAN" -Filter "*.py" | Measure-Object).Count
+# Result: 15 Python files ✅
+
+(Get-ChildItem -Path "SUBMISSION_CLEAN" -Filter "*.txt" | Measure-Object).Count
+# Result: 9 text files ✅
+
+(Get-ChildItem -Path "SUBMISSION_CLEAN\pet_images" -Filter "*.jpg" | Measure-Object).Count
+# Result: 40 images ✅
+
+# List contents
+Get-ChildItem -Path "SUBMISSION_CLEAN" | Select-Object Name
+
+# ═══════════════════════════════════════════════════════════════════
+# STEP 9: Create Submission ZIP
+# ═══════════════════════════════════════════════════════════════════
+Compress-Archive -Path "SUBMISSION_CLEAN\*" -DestinationPath "Udacity_Submission.zip" -Force
+
+# Verify ZIP
+Get-Item "Udacity_Submission.zip" | Select-Object Name, @{Name='Size(MB)';Expression={[math]::Round($_.Length/1MB,2)}}, LastWriteTime
+# Result: Udacity_Submission.zip - 8.77 MB ✅
+
+# ═══════════════════════════════════════════════════════════════════
+# FINAL VERIFICATION
+# ═══════════════════════════════════════════════════════════════════
+
+# ✅ pet_images JPG count: 40
+# ✅ Output files generated: 6
+# ✅ Python files in submission: 15
+# ✅ Text files in submission: 9
+# ✅ ZIP file created: Udacity_Submission.zip (8.77 MB)
+
+# ═══════════════════════════════════════════════════════════════════
+# SUBMISSION READY
+# ═══════════════════════════════════════════════════════════════════
+# Upload: Udacity_Submission.zip
+# Size: 8.77 MB
+# Contains: All required files + 40 pet_images + 6 output files

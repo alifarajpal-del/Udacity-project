@@ -1,0 +1,18 @@
+C:\Users\PH-User\Udacity-project\.venv\Lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\PH-User\Udacity-project\.venv\Lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+
+
+*** Results Summary for CNN Model Architecture VGG ***
+N Images            :   4
+N Dog Images        :   3
+N Not-Dog Images    :   1
+
+
+pct_match           :  50.0%
+pct_correct_dogs    : 100.0%
+pct_correct_breed   :  33.3%
+pct_correct_notdogs : 100.0%
+
+Total Time Elapsed: 00:00:08
